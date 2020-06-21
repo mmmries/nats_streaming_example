@@ -1,18 +1,7 @@
 defmodule NatsStreamingExample do
-  @moduledoc """
-  Documentation for `NatsStreamingExample`.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> NatsStreamingExample.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  require Logger
+  def message(message) do
+    Logger.info("#{__MODULE__} Received: #{inspect(message)}")
+    Nats.Streaming.Message.ack(message)
   end
 end
